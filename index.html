@@ -1,1 +1,2353 @@
-Hello world!
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="CleaNeRF">
+    <meta name="author" content="">
+
+
+    <title>CleaNeRF</title>
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Customized style -->
+    <style>
+      html * {
+        color: #333;
+        font-family: "Lato", sans-serif;
+      }
+      table.results td {
+        color: #888;
+        font-size: 90%;
+      }
+      .mtitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: "Varela Round", sans-serif;
+        color: #4d4d4d;
+        font-size: 50px;
+        line-height: 80px;
+        font-weight: 600;
+        letter-spacing: 3px;
+      }
+      .msubtitle {
+        margin-top: -30px;
+        margin-bottom: -20px;
+        font-size: 23px;
+        line-height: 65px;
+        letter-spacing: 2px;
+      }
+      .mneurips {
+        color: #aaa;
+        font-size: 20px;
+      }
+      .mauthors {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 15px;
+      }
+      .mauthors_affiliation {
+        margin-top: -12px;
+        margin-bottom: 24px;
+        font-family: "Open Sans", sans-serif;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      .darker_bg {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        background-color: #f5f5f5;
+      }
+      .nav-link {
+        color: #333;
+      }
+      .nav-link a:hover,
+      a:hover,
+      a:active {
+        color: #888 !important;
+      }
+      .accordion-button:not(.collapsed) {
+        color: inherit;
+        background: #f5f5f5;
+      }
+      .accordion-button:not(.collapsed)::after {
+        filter: brightness(0%) invert(70%);
+      }
+      .accordion-button:focus {
+        box-shadow: inherit;
+      }
+    </style>
+
+
+    <script src="js/video_comparison.js"></script>
+</head>
+
+<body>
+<header>
+    <div class="text-center">
+        <div class="container"></div>
+        <h1 class="nerf_title_v2">CleaNeRF: Erasing Artifacts from Casually Captured NeRFs</h1>
+        <h1 class="nerf_subheader_v2">Supplementary Material</h1>
+    </div>
+</header>
+
+
+<div class="container">
+
+    <section id="results">
+        <h2>CleaNeRF dataset</h2>
+        <br>
+        <p>We show training and evaluation videos from the 12 scenes of the CleaNeRF dataset. We hope this casual captured dataset that bridges the gap between current evaluation practice and the users requirements, will refocus the community's efforts.  </p>
+
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-aleo"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo"
+              aria-selected="true"
+            >
+              Aloe
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-art"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art"
+              role="tab"
+              type="button"
+              aria-controls="tab-art"
+              aria-selected="false"
+            >
+              Art
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-car"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car"
+              role="tab"
+              type="button"
+              aria-controls="tab-car"
+              aria-selected="false"
+            >
+              Car
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century"
+              role="tab"
+              type="button"
+              aria-controls="tab-century"
+              aria-selected="false"
+            >
+              Century
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers"
+              aria-selected="false"
+            >
+              Flowers
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-garbage"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage"
+              aria-selected="false"
+            >
+              Garbage
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-picnic"
+              data-bs-toggle="tab"
+              data-bs-target="#video-picnic"
+              role="tab"
+              type="button"
+              aria-controls="tab-picnic"
+              aria-selected="false"
+            >
+              Picnic
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pikachu"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pikachu"
+              role="tab"
+              type="button"
+              aria-controls="tab-pikachu"
+              aria-selected="false"
+            >
+              Pikachu
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pipe"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe"
+              aria-selected="false"
+            >
+              Pipe
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-plant"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant"
+              aria-selected="false"
+            >
+              Plant
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-roses"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses"
+              aria-selected="false"
+            >
+              Roses
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-table"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table"
+              role="tab"
+              type="button"
+              aria-controls="tab-table"
+              aria-selected="false"
+            >
+              Table
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade  show active  text-center"
+            id="video-aleo"
+            role="tabpanel"
+            aria-labelledby="tab-aleo"
+            style="background-color: white"
+          >
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/aloe/aloe.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/aloe/aloe-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-art"
+            role="tabpanel"
+            aria-labelledby="tab-art"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/art/art.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/art/art-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-car"
+            role="tabpanel"
+            aria-labelledby="tab-car"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/car/car.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/car/car-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-century"
+            role="tabpanel"
+            aria-labelledby="tab-century"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/century/century.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/century/century-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-flowers"
+            role="tabpanel"
+            aria-labelledby="tab-flowers"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/flowers/flowers.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/flowers/flowers-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-garbage"
+            role="tabpanel"
+            aria-labelledby="tab-garbage"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/garbage/garbage.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/garbage/garbage-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-picnic"
+            role="tabpanel"
+            aria-labelledby="tab-picnic"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/picnic/picnic.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/picnic/picnic-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-pikachu"
+            role="tabpanel"
+            aria-labelledby="tab-pikachu"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/pikachu/pikachu.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/pikachu/pikachu-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-pipe"
+            role="tabpanel"
+            aria-labelledby="tab-pipe"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/pipe/pipe.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/pipe/pipe-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-plant"
+            role="tabpanel"
+            aria-labelledby="tab-plant"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/plant/plant.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/plant/plant-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-roses"
+            role="tabpanel"
+            aria-labelledby="tab-roses"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/roses/roses.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/roses/roses-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-table"
+            role="tabpanel"
+            aria-labelledby="tab-table"
+            style="background-color: white"
+          >
+
+            <table width="50%" align="center" class="results">
+                <tbody>
+                    <tr align="center">
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                            <source src="media/nerf-captures/table/table.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                        <td width="50%">
+                            <video width="100%" autoplay loop muted controls>
+                           <source src="media/nerf-captures/table/table-eval.mp4" type="video/mp4">
+                            </video>
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td>
+                            Train Video
+                        </td>
+                        <td>
+                            Eval Video
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+
+
+        </div>
+    </section>
+
+
+    <section id="results">
+        <h2>CleaNeRF results</h2>
+        <br>
+        <p>
+        We compare CleaNeRF with our strong baselines: 
+
+        <ol>
+          <li>Nerfacto</li>
+          <li>Nerfacto + Visibility Loss</li>
+          <li>Nerfacto + Visibility Loss + Sparsity Loss</li>
+          <li>Nerfacto + Visibility Loss + TV Loss</li>
+          <li>Nerfacto + Visibility Loss + RegNeRF </li>
+        </ol>
+
+        on the 12 scenes from the CleaNeRF dataset.
+        </p>
+
+
+        <h3 class="mt-4 mb-3">Aleo</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-aleo-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-aleo-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-aleo-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-aleo-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-aleo-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-aleo-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-aleo-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade text-center"
+            id="video-aleo-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-aleo-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="aleo-nerfactoDiv">
+                <video class="aleo-video" id="aleo-nerfacto" loop playsinline autoPlay muted src="comparison_videos/aloe---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="aleo-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="aleo"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-aleo-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-aleo-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="aleo-nerfacto-visDiv">
+                    <video class="aleo-video" id="aleo-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/aloe---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="aleo-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="aleo"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-aleo-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-aleo-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="aleo-nerfacto-vis-sparsityDiv">
+                    <video class="aleo-video" id="aleo-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/aloe---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="aleo-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="aleo"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-aleo-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-aleo-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="aleo-nerfacto-vis-tvDiv">
+                    <video class="aleo-video" id="aleo-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/aloe---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="aleo-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="aleo"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-aleo-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-aleo-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="aleo-nerfacto-vis-regnerfDiv">
+                <video class="aleo-video" id="aleo-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/aloe---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="aleo-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="aleo"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+    </section>
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Art</h3>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-art-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-art-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-art-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-art-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-art-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-art-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-art-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-art-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-art-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-art-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-art-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+            <div
+            class="tab-pane fade show active text-center"
+            id="video-art-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-art-nerfacto"
+            style="background-color: white"
+            >
+
+                <div class="video-compare-container" id="art-nerfactoDiv">
+                    <video class="art-video" id="art-nerfacto" loop playsinline autoPlay muted src="comparison_videos/art---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="art-nerfactoMerge"></canvas>
+                </div>
+                <div class="text-center">
+                    <button onclick="play(this)" id="art"> Play / Pause</button>
+                </div>
+            </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-art-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-art-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="art-nerfacto-visDiv">
+                    <video class="art-video" id="art-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/art---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="art-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="art"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-art-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-art-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="art-nerfacto-vis-sparsityDiv">
+                    <video class="art-video" id="art-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/art---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="art-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="art"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-art-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-art-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="art-nerfacto-vis-tvDiv">
+                    <video class="art-video" id="art-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/art---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="art-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="art"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-art-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-art-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="art-nerfacto-vis-regnerfDiv">
+                <video class="art-video" id="art-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/art---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="art-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="art"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+<section>
+        <h3 class="mt-4 mb-3">Car</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-car-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-car-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-car-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-car-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-car-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-car-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-car-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-car-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-car-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-car-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-car-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-car-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-car-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="car-nerfactoDiv">
+                <video class="car-video" id="car-nerfacto" loop playsinline autoPlay muted src="comparison_videos/car---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="car-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="car"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-car-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-car-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="car-nerfacto-visDiv">
+                    <video class="car-video" id="car-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/car---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="car-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="car"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-car-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-car-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="car-nerfacto-vis-sparsityDiv">
+                    <video class="car-video" id="car-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/car---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="car-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="car"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-car-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-car-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="car-nerfacto-vis-tvDiv">
+                    <video class="car-video" id="car-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/car---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="car-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="car"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-car-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-car-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="car-nerfacto-vis-regnerfDiv">
+                <video class="car-video" id="car-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/car---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="car-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="car"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Century</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-century-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-century-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-century-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-century-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-century-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-century-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-century-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-century-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-century-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-century-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="century-nerfactoDiv">
+                <video class="century-video" id="century-nerfacto" loop playsinline autoPlay muted src="comparison_videos/century---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="century-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="century"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-century-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-century-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="century-nerfacto-visDiv">
+                    <video class="century-video" id="century-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/century---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="century-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="century"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-century-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-century-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="century-nerfacto-vis-sparsityDiv">
+                    <video class="century-video" id="century-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/century---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="century-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="century"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-century-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-century-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="century-nerfacto-vis-tvDiv">
+                    <video class="century-video" id="century-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/century---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="century-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="century"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-century-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-century-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="century-nerfacto-vis-regnerfDiv">
+                <video class="century-video" id="century-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/century---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="century-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="century"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Flowers</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-flowers-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-flowers-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-flowers-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-flowers-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-flowers-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-flowers-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-flowers-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-flowers-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-flowers-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="flowers-nerfactoDiv">
+                <video class="flowers-video" id="flowers-nerfacto" loop playsinline autoPlay muted src="comparison_videos/flowers---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="flowers-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="flowers"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-flowers-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-flowers-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="flowers-nerfacto-visDiv">
+                    <video class="flowers-video" id="flowers-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/flowers---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="flowers-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="flowers"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-flowers-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-flowers-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="flowers-nerfacto-vis-sparsityDiv">
+                    <video class="flowers-video" id="flowers-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/flowers---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="flowers-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="flowers"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-flowers-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-flowers-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="flowers-nerfacto-vis-tvDiv">
+                    <video class="flowers-video" id="flowers-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/flowers---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="flowers-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="flowers"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-flowers-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-flowers-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="flowers-nerfacto-vis-regnerfDiv">
+                <video class="flowers-video" id="flowers-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/flowers---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="flowers-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="flowers"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Garbage</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-garbage-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-garbage-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-garbage-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-garbage-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-garbage-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-garbage-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-garbage-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-garbage-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-garbage-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="garbage-nerfactoDiv">
+                <video class="garbage-video" id="garbage-nerfacto" loop playsinline autoPlay muted src="comparison_videos/garbage---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="garbage-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="garbage"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-garbage-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-garbage-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="garbage-nerfacto-visDiv">
+                    <video class="garbage-video" id="garbage-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/garbage---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="garbage-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="garbage"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-garbage-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-garbage-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="garbage-nerfacto-vis-sparsityDiv">
+                    <video class="garbage-video" id="garbage-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/garbage---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="garbage-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="garbage"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-garbage-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-garbage-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="garbage-nerfacto-vis-tvDiv">
+                    <video class="garbage-video" id="garbage-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/garbage---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="garbage-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="garbage"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-garbage-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-garbage-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="garbage-nerfacto-vis-regnerfDiv">
+                <video class="garbage-video" id="garbage-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/garbage---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="garbage-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="garbage"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Pipe</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-pipe-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pipe-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pipe-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pipe-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-pipe-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-pipe-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-pipe-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-pipe-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-pipe-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="pipe-nerfactoDiv">
+                <video class="pipe-video" id="pipe-nerfacto" loop playsinline autoPlay muted src="comparison_videos/pipe---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="pipe-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="pipe"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-pipe-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-pipe-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="pipe-nerfacto-visDiv">
+                    <video class="pipe-video" id="pipe-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/pipe---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="pipe-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="pipe"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-pipe-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-pipe-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="pipe-nerfacto-vis-sparsityDiv">
+                    <video class="pipe-video" id="pipe-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/pipe---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="pipe-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="pipe"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-pipe-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-pipe-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="pipe-nerfacto-vis-tvDiv">
+                    <video class="pipe-video" id="pipe-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/pipe---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="pipe-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="pipe"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-pipe-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-pipe-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="pipe-nerfacto-vis-regnerfDiv">
+                <video class="pipe-video" id="pipe-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/pipe---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="pipe-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="pipe"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Plant</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-plant-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-plant-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-plant-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-plant-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-plant-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-plant-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-plant-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-plant-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-plant-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="plant-nerfactoDiv">
+                <video class="plant-video" id="plant-nerfacto" loop playsinline autoPlay muted src="comparison_videos/plant---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="plant-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="plant"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-plant-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-plant-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="plant-nerfacto-visDiv">
+                    <video class="plant-video" id="plant-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/plant---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="plant-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="plant"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-plant-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-plant-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="plant-nerfacto-vis-sparsityDiv">
+                    <video class="plant-video" id="plant-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/plant---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="plant-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="plant"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-plant-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-plant-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="plant-nerfacto-vis-tvDiv">
+                    <video class="plant-video" id="plant-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/plant---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="plant-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="plant"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-plant-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-plant-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="plant-nerfacto-vis-regnerfDiv">
+                <video class="plant-video" id="plant-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/plant---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="plant-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="plant"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Roses</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-roses-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-roses-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-roses-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-roses-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-roses-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-roses-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-roses-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-roses-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-roses-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="roses-nerfactoDiv">
+                <video class="roses-video" id="roses-nerfacto" loop playsinline autoPlay muted src="comparison_videos/roses---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="roses-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="roses"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-roses-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-roses-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="roses-nerfacto-visDiv">
+                    <video class="roses-video" id="roses-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/roses---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="roses-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="roses"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-roses-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-roses-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="roses-nerfacto-vis-sparsityDiv">
+                    <video class="roses-video" id="roses-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/roses---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="roses-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="roses"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-roses-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-roses-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="roses-nerfacto-vis-tvDiv">
+                    <video class="roses-video" id="roses-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/roses---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="roses-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="roses"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-roses-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-roses-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="roses-nerfacto-vis-regnerfDiv">
+                <video class="roses-video" id="roses-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/roses---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="roses-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="roses"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+
+
+<section>
+        <h3 class="mt-4 mb-3">Table</h3>
+        <p>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button
+              class="nav-item nav-link active"
+              id="tab-table-nerfacto"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table-nerfacto"
+              role="tab"
+              type="button"
+              aria-controls="tab-table-nerfacto"
+              aria-selected="true"
+            >
+              Nerfacto
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-table-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table-nerfacto-vis"
+              role="tab"
+              type="button"
+              aria-controls="tab-table-nerfacto-vis"
+              aria-selected="false"
+            >
+              Nerfacto + Vis
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-table-nerfacto-vis-sparsity"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table-nerfacto-vis-sparsity"
+              role="tab"
+              type="button"
+              aria-controls="tab-table-nerfacto-sparsity"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + Sparsity
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-table-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table-nerfacto-vis-tv"
+              role="tab"
+              type="button"
+              aria-controls="tab-table-nerfacto-vis-tv"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + TV
+            </button>
+            <button
+              class="nav-item nav-link"
+              id="tab-table-nerfacto-vis"
+              data-bs-toggle="tab"
+              data-bs-target="#video-table-nerfacto-vis-regnerf"
+              role="tab"
+              type="button"
+              aria-controls="tab-table-nerfacto-vis-regnerf"
+              aria-selected="false"
+            >
+              Nerfacto + Vis + RegNeRF
+            </button>
+          </div>
+        </nav>
+
+        <div class="tab-content" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active text-center"
+            id="video-table-nerfacto"
+            role="tabpanel"
+            aria-labelledby="tab-table-nerfacto"
+            style="background-color: white"
+          >
+
+            <div class="video-compare-container" id="table-nerfactoDiv">
+                <video class="table-video" id="table-nerfacto" loop playsinline autoPlay muted src="comparison_videos/table---nerfacto.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="table-nerfactoMerge"></canvas>
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="table"> Play / Pause</button>
+            </div>
+          </div>
+
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-table-nerfacto-vis"
+            role="tabpanel"
+            aria-labelledby="tab-table-nerfacto-vis"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="table-nerfacto-visDiv">
+                    <video class="table-video" id="table-nerfacto-vis" loop playsinline autoPlay muted src="comparison_videos/table---nerfacto-frustum.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="table-nerfacto-visMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="table"> Play / Pause</button>
+            </div>
+
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-table-nerfacto-vis-sparsity"
+            role="tabpanel"
+            aria-labelledby="tab-table-nerfacto-vis-sparsity"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="table-nerfacto-vis-sparsityDiv">
+                    <video class="table-video" id="table-nerfacto-vis-sparsity" loop playsinline autoPlay muted src="comparison_videos/table---nerfacto-frustum-sparsity.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="table-nerfacto-vis-sparsityMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="table"> Play / Pause</button>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade text-center"
+            id="video-table-nerfacto-vis-tv"
+            role="tabpanel"
+            aria-labelledby="tab-table-nerfacto-vis-tv"
+            style="background-color: white"
+          >
+
+                  <div class="video-compare-container" id="table-nerfacto-vis-tvDiv">
+                    <video class="table-video" id="table-nerfacto-vis-tv" loop playsinline autoPlay muted src="comparison_videos/table---nerfacto-frustum-TV.mp4" onplay="resizeAndPlay(this)"></video>
+                    
+                    <canvas height=0 class="videoMerge" id="table-nerfacto-vis-tvMerge"></canvas>
+                </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="table"> Play / Pause</button>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade text-center"
+            id="video-table-nerfacto-vis-regnerf"
+            role="tabpanel"
+            aria-labelledby="tab-table-nerfacto-vis-regnerf"
+            style="background-color: white"
+          >
+              <div class="video-compare-container" id="table-nerfacto-vis-regnerfDiv">
+                <video class="table-video" id="table-nerfacto-vis-regnerf" loop playsinline autoPlay muted src="comparison_videos/table---nerfacto-frustum-regnerf.mp4" onplay="resizeAndPlay(this)"></video>
+                
+                <canvas height=0 class="videoMerge" id="table-nerfacto-vis-regnerfMerge"></canvas>   
+            </div>
+            <div class="text-center">
+                <button onclick="play(this)" id="table"> Play / Pause</button>
+            </div>
+
+          </div>
+        </div>
+</section>
+
+
+
+</div>
+</body>
+</html>
